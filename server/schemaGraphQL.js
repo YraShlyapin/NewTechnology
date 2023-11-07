@@ -1,26 +1,20 @@
-import { buildSchema } from 'graphql'
+export default `type Query {
+    getAllDesigners: [Designer]
+    getDesigner(id: ID): Designer
+}
 
-const schema = buildSchema(`
-    type Designer {
-        id: ID
-        name: String
-        image: String
-    }
+type Mutation {
+    createDesigner(input: InputDesigner): Designer
+}
 
-    input InputDesigner {
-        id: ID
-        name: String!
-        image: String!
-    }
+type Designer {
+    id: ID
+    name: String
+    image: String
+}
 
-    type Query {
-        getAllDesigners: [Designer]
-        getDesigner(id: ID): Designer
-    }
-
-    type Mutation {
-        createDesigner(input: InputDesigner): Designer
-    }
-`)
-
-export default schema
+input InputDesigner {
+    id: ID
+    name: String!
+    image: String!
+}`
