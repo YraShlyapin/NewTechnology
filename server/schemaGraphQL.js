@@ -1,4 +1,10 @@
-export default `type Query {
+export default `schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    hello: String
     getAllDesigners: [Designer]
     getDesigner(id: ID): Designer
 }

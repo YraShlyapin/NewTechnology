@@ -21,15 +21,18 @@ async function main() {
 
     const root = {
         Query: {
-            getAllDesigners (_, _args){
+            hello(_, _args) {
+                return "asd"
+            },
+            getAllDesigners(_, _args) {
                 return db
             },
-            getDesigner (_, {id}){
+            getDesigner(_, {id}) {
                 return db.find(e => e.id == id)
             }
         },
         Mutation: {
-            createDesigner (_, {input}){
+            createDesigner(_, {input}) {
                 db.push(input)
                 return input
             }
