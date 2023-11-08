@@ -32,6 +32,6 @@
     "graphql-tag": "^2.12.6",
     "vue": "^3.3.8",
     "vue-resource": "^1.5.3",
-    "vue-router": "^3.6.5"
+    "vue-router": "^4.2.5"
   }
 }

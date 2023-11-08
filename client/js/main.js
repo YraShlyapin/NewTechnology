@@ -1,17 +1,15 @@
-import Vue from 'vue'
+import { createApp, h } from 'vue'
 import VueResource from 'vue-resource'
-import VueRouter from 'vue-router'
+import { createRouter, createMemoryHistory } from 'vue-router'
+
+import routes from './routes.js'
 
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
 import { createApolloProvider } from '@vue/apollo-option'
 
-import routes from './routes.js'
-
 import App from './components/App.vue'
 
-Vue.use(VueResource)
-Vue.use(VueRouter)
-
+// apollo client
 const httpLink = createHttpLink({
     uri: 'http://localhost:80/graphql',
 })
@@ -27,20 +25,18 @@ const apolloProvider = createApolloProvider({
     defaultClient: apolloClient,
 })
 
-Vue.use(apolloProvider)
-
-const router = new VueRouter({
-    mode: "history",
-    routes,
-    scrollBehavior (to, from, sacedPosition){
-        return { x: 0, y: 0 }
-    }
+// vue router
+const router = createRouter({
+    history: createMemoryHistory(),
+    routes
 })
 
-let app = new Vue({
-    el: '#app',
-    router,
-    render: (a) => {
-        return a(App)
-    }
+// vue app
+const app = createApp({
+    render: () => h(App)
 })
+
+app.use(router)
+app.use(VueResource)
+app.use(apolloProvider)
+app.mount('#app')

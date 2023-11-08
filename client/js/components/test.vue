@@ -1,28 +1,34 @@
 <template>
     <div>
         <p>asddddddddddd</p>
-        {{ hello }}
+        <p>{{ getAllDesigners }}</p>
         <button @click="btn">asd</button>
     </div>
 </template>
 <script>
     import gql from 'graphql-tag'
-    
+
     export default {
         data() {
             return {
-                hello: ''
+                getAllDesigners: []
             }
         },
         methods: {
             btn() {
-                this.$apollo.query()
+                this.$apollo.queries.getAllDesigners.refetch()
             }
         },
         apollo: {
-            hello:  gql`query {
-                    hello
+            getAllDesigners:  {
+                query: gql`query {
+                    getAllDesigners{
+                        id
+                        name
+                        image
+                    }
                 }`
+            }
         }
     }
 </script>
