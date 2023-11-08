@@ -1,8 +1,11 @@
 <template>
     <div>
         <p>asddddddddddd</p>
-        <p>{{ getAllDesigners }}</p>
-        <button @click="btn">asd</button>
+        <p>{{ users }}</p>
+        <p v-if="$apollo.queries.users.loading">Loading</p>
+        <p v-else>{{ userById }}</p>
+        <input type="number" v-model="idUsers">
+
     </div>
 </template>
 <script>
@@ -11,23 +14,37 @@
     export default {
         data() {
             return {
-                getAllDesigners: []
+                users: [],
+                idUsers: 0,
+                userById: {}
             }
         },
         methods: {
-            btn() {
-                this.$apollo.queries.getAllDesigners.refetch()
-            }
+            
         },
         apollo: {
-            getAllDesigners:  {
+            users:  {
                 query: gql`query {
-                    getAllDesigners{
+                    users: getAllDesigners{
                         id
                         name
                         image
                     }
-                }`
+                }`,
+            },
+            userById: {
+                query: gql`query DesignerById($id: ID) {
+                    userById: getDesigner(id: $id){
+                        id
+                        name
+                        image
+                    }
+                }`,
+                variables() {
+                    return{
+                        id: this.idUsers
+                    }
+                },
             }
         }
     }
