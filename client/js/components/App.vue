@@ -2,7 +2,7 @@
     <div>
         <router-view></router-view>
         <Teleport to="body">
-            <p>asddddddddd</p>
+            <p>asdddddddd</p>
         </Teleport>
     </div>
     
