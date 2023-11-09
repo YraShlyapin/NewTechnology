@@ -1,6 +1,5 @@
 <template>
-    <router-link to="/">/</router-link>
-    <teleport to="body">
-        <p>asd</p>
-    </teleport>
+    <router-link to="/">asd</router-link>
+    <p>{{ $store.state.count }}</p>
+    <button @click="this.$store.commit('increment')">+</button>
 </template>

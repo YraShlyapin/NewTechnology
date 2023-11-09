@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue'
-import VueResource from 'vue-resource'
 import { createRouter, createWebHistory } from 'vue-router'
+import { createStore } from 'vuex'
+import VueResource from 'vue-resource'
 
 import routes from './routes.js'
 
@@ -31,12 +32,27 @@ const router = createRouter({
     routes
 })
 
+// vuex store
+const store = createStore({
+    state() {
+        return {
+            count: 0
+        }
+    },
+    mutations: {
+        increment(state){
+            state.count++
+        }
+    }
+})
+
 // vue app
 const app = createApp({
     render: () => h(App)
 })
 
 app.use(router)
+app.use(store)
 app.use(VueResource)
 app.use(apolloProvider)
 app.mount('#app')
