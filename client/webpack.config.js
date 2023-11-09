@@ -6,7 +6,8 @@ module.exports = {
     entry: './js/main.js',
     resolve: {
         alias: {
-            vue: '@vue/compat'
+            vue: '@vue/compat',
+            'Components@': path.resolve(__dirname, 'js', 'components')
         }
     },
     output: {

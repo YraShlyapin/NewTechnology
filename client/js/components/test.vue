@@ -1,9 +1,10 @@
 <template>
     <div>
+        <router-link to="/another">/</router-link>
         <p>asddddddddddd</p>
         <p>{{ users }}</p>
         <p v-if="$apollo.queries.users.loading">Loading</p>
-        <p v-else>{{ userById }}</p>
+        <p v-else>{{ sss }}</p>
         <input type="number" v-model="idUsers">
 
     </div>
@@ -16,25 +17,27 @@
             return {
                 users: [],
                 idUsers: 0,
-                userById: {}
+                userById: {},
+                sss: {}
             }
         },
-        methods: {
-            
+        mounted(){
+            console.log('Hi it is my first apollo client site')
         },
         apollo: {
             users:  {
                 query: gql`query {
-                    users: getAllDesigners{
+                    getAllDesigners{
                         id
                         name
                         image
                     }
                 }`,
+                update: data => data.getAllDesigners
             },
             userById: {
                 query: gql`query DesignerById($id: ID) {
-                    userById: getDesigner(id: $id){
+                    getDesigner(id: $id){
                         id
                         name
                         image
@@ -45,6 +48,12 @@
                         id: this.idUsers
                     }
                 },
+                manual: true,
+                result({ data, loading }) {
+                    if (!loading) {
+                        this.sss = data?.getDesigner
+                    }
+                }
             }
         }
     }

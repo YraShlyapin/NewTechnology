@@ -1,6 +1,6 @@
 import { createApp, h } from 'vue'
 import VueResource from 'vue-resource'
-import { createRouter, createMemoryHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import routes from './routes.js'
 
@@ -27,7 +27,7 @@ const apolloProvider = createApolloProvider({
 
 // vue router
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes
 })
 
