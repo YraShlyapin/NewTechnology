@@ -11,6 +11,7 @@ type Query {
 
 type Mutation {
     createDesigner(input: InputDesigner): Designer
+    deleteDesigner(id: ID): Designer
 }
 
 type Designer {

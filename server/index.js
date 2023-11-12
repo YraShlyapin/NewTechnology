@@ -2,7 +2,6 @@ import express from 'express'
 import path from 'path'
 import { createYoga, createSchema } from 'graphql-yoga'
 import schema_file from './schemaGraphQL.js'
-import { loadFiles } from '@graphql-tools/load-files'
 
 import cors from 'cors'
 import 'dotenv/config'
@@ -15,7 +14,7 @@ const host = process.env.HOST || 'localhost'
 async function main() {
 
     const app = express()
-    const db = [{name:"asd", id: 1, image: "https://"}]
+    let db = [{name:"asd", id: 1, image: "https://"}]
     
     app.use(cors())
 
@@ -33,8 +32,15 @@ async function main() {
         },
         Mutation: {
             createDesigner(_, {input}) {
-                db.push(input)
-                return input
+                let createUser = input
+                createUser.id = db.length
+                db.push(createUser)
+                return createUser
+            },
+            deleteDesigner(_, {id}) {
+                let deletedUser = db.find(e => e.id == id)
+                db = db.filter(e => e.id != id)
+                return deletedUser
             }
         }
     }
