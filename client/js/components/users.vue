@@ -7,10 +7,12 @@
                 <button type="submit">отправить</button>
             </form>
         </div>
-        <div v-for="user in users">
-            <h1>{{ user.name }}</h1>
-            <img :src="user.image" :alt="user.name">
-            <button @click.prevent="deleteUsers(user.id)">x</button>
+        <div id="wrapper_users">
+            <div v-for="user in users" class="users">
+                <h1>{{ user.name }}</h1>
+                <img :src="user.image" :alt="user.name">
+                <button @click.prevent="deleteUsers(user.id)">x</button>
+            </div>
         </div>
     </div>
 </template>
@@ -92,3 +94,6 @@
         }
     }
 </script>
+<style lang="scss" scoped>
+    @import 'Styles@/users.scss';
+</style>

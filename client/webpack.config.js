@@ -8,7 +8,8 @@ module.exports = {
     resolve: {
         alias: {
             vue: '@vue/compat',
-            'Components@': path.resolve(__dirname, 'js', 'components')
+            'Components@': path.resolve(__dirname, 'js', 'components'),
+            'Styles@': path.resolve(__dirname, 'css')
         }
     },
     output: {
@@ -29,13 +30,13 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.s[ac]ss$/i,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                  "style-loader",
+                  "css-loader",
+                  "sass-loader",
                 ],
-                
-            }
+              }
         ]
     },
     plugins: [
