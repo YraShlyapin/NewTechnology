@@ -9,6 +9,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./js/apolloClient.js":
+/*!****************************!*\
+  !*** ./js/apolloClient.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @apollo/client/core */ \"./node_modules/@apollo/client/link/http/createHttpLink.js\");\n/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @apollo/client/core */ \"./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js\");\n/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @apollo/client/core */ \"./node_modules/@apollo/client/core/ApolloClient.js\");\n/* harmony import */ var _vue_apollo_option__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/apollo-option */ \"./node_modules/@vue/apollo-option/dist/vue-apollo-option.esm.js\");\n\r\n\r\n\r\nconst httpLink = (0,_apollo_client_core__WEBPACK_IMPORTED_MODULE_1__.createHttpLink)({\r\n    uri: \"http://localhost:80/graphql\" || 0,\r\n})\r\n\r\nconst cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_2__.InMemoryCache()\r\n\r\nconst apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_3__.ApolloClient({\r\n    link: httpLink,\r\n    cache,\r\n})\r\n\r\nconst apolloProvider = (0,_vue_apollo_option__WEBPACK_IMPORTED_MODULE_0__.createApolloProvider)({\r\n    defaultClient: apolloClient,\r\n})\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (apolloProvider);\n\n//# sourceURL=webpack://client/./js/apolloClient.js?");
+
+/***/ }),
+
 /***/ "./js/main.js":
 /*!********************!*\
   !*** ./js/main.js ***!
@@ -16,18 +27,29 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/@vue/compat/dist/vue.runtime.esm-bundler.js\");\n/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ \"./node_modules/vue-router/dist/vue-router.mjs\");\n/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuex */ \"./node_modules/vuex/dist/vuex.esm-bundler.js\");\n/* harmony import */ var vue_resource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-resource */ \"./node_modules/vue-resource/dist/vue-resource.esm.js\");\n/* harmony import */ var _routes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes.js */ \"./js/routes.js\");\n/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @apollo/client/core */ \"./node_modules/@apollo/client/link/http/createHttpLink.js\");\n/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @apollo/client/core */ \"./node_modules/@apollo/client/cache/inmemory/inMemoryCache.js\");\n/* harmony import */ var _apollo_client_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @apollo/client/core */ \"./node_modules/@apollo/client/core/ApolloClient.js\");\n/* harmony import */ var _vue_apollo_option__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vue/apollo-option */ \"./node_modules/@vue/apollo-option/dist/vue-apollo-option.esm.js\");\n/* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/App.vue */ \"./js/components/App.vue\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n// apollo client\r\nconst httpLink = (0,_apollo_client_core__WEBPACK_IMPORTED_MODULE_5__.createHttpLink)({\r\n    uri: 'http://localhost:80/graphql',\r\n})\r\n\r\nconst cache = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_6__.InMemoryCache()\r\n\r\nconst apolloClient = new _apollo_client_core__WEBPACK_IMPORTED_MODULE_7__.ApolloClient({\r\n    link: httpLink,\r\n    cache,\r\n})\r\n\r\nconst apolloProvider = (0,_vue_apollo_option__WEBPACK_IMPORTED_MODULE_3__.createApolloProvider)({\r\n    defaultClient: apolloClient,\r\n})\r\n\r\n// vue router\r\nconst router = (0,vue_router__WEBPACK_IMPORTED_MODULE_8__.createRouter)({\r\n    history: (0,vue_router__WEBPACK_IMPORTED_MODULE_8__.createWebHistory)(),\r\n    routes: _routes_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\r\n})\r\n\r\n// vuex store\r\nconst store = (0,vuex__WEBPACK_IMPORTED_MODULE_9__.createStore)({\r\n    state() {\r\n        return {\r\n            count: 0\r\n        }\r\n    },\r\n    mutations: {\r\n        increment(state){\r\n            state.count++\r\n        }\r\n    }\r\n})\r\n\r\n// vue app\r\nconst app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({\r\n    render: () => (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(_components_App_vue__WEBPACK_IMPORTED_MODULE_4__[\"default\"])\r\n})\r\n\r\napp.use(router)\r\napp.use(store)\r\napp.use(vue_resource__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\r\napp.use(apolloProvider)\r\napp.mount('#app')\n\n//# sourceURL=webpack://client/./js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/@vue/compat/dist/vue.runtime.esm-bundler.js\");\n/* harmony import */ var vue_resource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-resource */ \"./node_modules/vue-resource/dist/vue-resource.esm.js\");\n/* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router.js */ \"./js/router.js\");\n/* harmony import */ var _vuex_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vuex.js */ \"./js/vuex.js\");\n/* harmony import */ var _apolloClient_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./apolloClient.js */ \"./js/apolloClient.js\");\n/* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/App.vue */ \"./js/components/App.vue\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n// vue app\r\nconst app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({\r\n    render: () => (0,vue__WEBPACK_IMPORTED_MODULE_0__.h)(_components_App_vue__WEBPACK_IMPORTED_MODULE_5__[\"default\"])\r\n})\r\n\r\napp.use(_router_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])\r\napp.use(_vuex_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])\r\napp.use(vue_resource__WEBPACK_IMPORTED_MODULE_1__[\"default\"])\r\napp.use(_apolloClient_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"])\r\napp.mount('#app')\n\n//# sourceURL=webpack://client/./js/main.js?");
 
 /***/ }),
 
-/***/ "./js/routes.js":
+/***/ "./js/router.js":
 /*!**********************!*\
-  !*** ./js/routes.js ***!
+  !*** ./js/router.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var Components_test_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Components@/test.vue */ \"./js/components/test.vue\");\n/* harmony import */ var Components_another_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! Components@/another.vue */ \"./js/components/another.vue\");\n\r\n\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([\r\n    {\r\n        path: '/',\r\n        component: Components_test_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\r\n    },\r\n    {\r\n        path: '/another',\r\n        component: Components_another_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\r\n    },\r\n    {\r\n        path: '/:pathMatch(.*)*',\r\n        component: Components_another_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\r\n    }\r\n]);\n\n//# sourceURL=webpack://client/./js/routes.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ \"./node_modules/vue-router/dist/vue-router.mjs\");\n/* harmony import */ var Components_test_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! Components@/test.vue */ \"./js/components/test.vue\");\n/* harmony import */ var Components_another_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! Components@/another.vue */ \"./js/components/another.vue\");\n/* harmony import */ var Components_users_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! Components@/users.vue */ \"./js/components/users.vue\");\n\r\n\r\n\r\n\r\n\r\n\r\nconst routes = [\r\n    {\r\n        path: '/',\r\n        component: Components_test_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\r\n    },\r\n    {\r\n        path: '/users',\r\n        component: Components_users_vue__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\r\n    },\r\n    {\r\n        path: '/another',\r\n        component: Components_another_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\r\n    },\r\n    {\r\n        path: '/:pathMatch(.*)*',\r\n        component: Components_another_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\r\n    }\r\n]\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createRouter)({\r\n    history: (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createWebHistory)(),\r\n    routes\r\n}));\n\n//# sourceURL=webpack://client/./js/router.js?");
+
+/***/ }),
+
+/***/ "./js/vuex.js":
+/*!********************!*\
+  !*** ./js/vuex.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ \"./node_modules/vuex/dist/vuex.esm-bundler.js\");\n\r\n\r\nconst store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({\r\n    state() {\r\n        return {\r\n            count: 0,\r\n            users: {}\r\n        }\r\n    },\r\n    mutations: {\r\n        increment(state){\r\n            state.count++\r\n        },\r\n        initialiseStore(state) {\r\n\t\t\tif(localStorage.getItem('store')) {\r\n                this.replaceState(\r\n\t\t\t\t\tObject.assign(state, JSON.parse(localStorage.getItem('store')))\r\n\t\t\t\t)\r\n\t\t\t}\r\n\t\t}\r\n    }\r\n})\r\n\r\nstore.subscribe((mutation, state) => {\r\n\tlocalStorage.setItem('store', JSON.stringify(state));\r\n})\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);\n\n//# sourceURL=webpack://client/./js/vuex.js?");
 
 /***/ }),
 
@@ -137,7 +159,18 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n// r
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _App_vue_vue_type_template_id_6a6fa670__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=6a6fa670 */ \"./js/components/App.vue?vue&type=template&id=6a6fa670\");\n/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/vue-loader/dist/exportHelper.js */ \"./node_modules/vue-loader/dist/exportHelper.js\");\n\nconst script = {}\n\n;\nconst __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(script, [['render',_App_vue_vue_type_template_id_6a6fa670__WEBPACK_IMPORTED_MODULE_0__.render],['__file',\"js/components/App.vue\"]])\n/* hot reload */\nif (false) {}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);\n\n//# sourceURL=webpack://client/./js/components/App.vue?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _App_vue_vue_type_template_id_6a6fa670__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=6a6fa670 */ \"./js/components/App.vue?vue&type=template&id=6a6fa670\");\n/* harmony import */ var _App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js */ \"./js/components/App.vue?vue&type=script&lang=js\");\n/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/dist/exportHelper.js */ \"./node_modules/vue-loader/dist/exportHelper.js\");\n\n\n\n\n;\nconst __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"], [['render',_App_vue_vue_type_template_id_6a6fa670__WEBPACK_IMPORTED_MODULE_0__.render],['__file',\"js/components/App.vue\"]])\n/* hot reload */\nif (false) {}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);\n\n//# sourceURL=webpack://client/./js/components/App.vue?");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/App.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/App.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\r\n    /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\r\n        beforeCreate() {\r\n            this.$store.commit('initialiseStore')\r\n        }\r\n    });\r\n\n\n//# sourceURL=webpack://client/./js/components/App.vue?./node_modules/vue-loader/dist/index.js??ruleSet%5B0%5D");
 
 /***/ }),
 
@@ -171,6 +204,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ \"./node_modules/graphql-tag/lib/index.js\");\n\r\n    \r\n\r\n    /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\r\n        data() {\r\n            return {\r\n                users: [],\r\n                idUsers: 0,\r\n                userById: {},\r\n                sss: {}\r\n            }\r\n        },\r\n        mounted(){\r\n            console.log('Hi it is my first apollo client site')\r\n        },\r\n        apollo: {\r\n            users:  {\r\n                query: (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__[\"default\"])`query {\r\n                    getAllDesigners{\r\n                        id\r\n                        name\r\n                        image\r\n                    }\r\n                }`,\r\n                update: data => data.getAllDesigners\r\n            },\r\n            userById: {\r\n                query: (0,graphql_tag__WEBPACK_IMPORTED_MODULE_0__[\"default\"])`query DesignerById($id: ID) {\r\n                    getDesigner(id: $id){\r\n                        id\r\n                        name\r\n                        image\r\n                    }\r\n                }`,\r\n                variables() {\r\n                    return{\r\n                        id: this.idUsers\r\n                    }\r\n                },\r\n                manual: true,\r\n                result({ data, loading }) {\r\n                    if (!loading) {\r\n                        this.sss = data?.getDesigner\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    });\r\n\n\n//# sourceURL=webpack://client/./js/components/test.vue?./node_modules/vue-loader/dist/index.js??ruleSet%5B0%5D");
+
+/***/ }),
+
+/***/ "./js/components/users.vue":
+/*!*********************************!*\
+  !*** ./js/components/users.vue ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _users_vue_vue_type_template_id_10849d37__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users.vue?vue&type=template&id=10849d37 */ \"./js/components/users.vue?vue&type=template&id=10849d37\");\n/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/vue-loader/dist/exportHelper.js */ \"./node_modules/vue-loader/dist/exportHelper.js\");\n\nconst script = {}\n\n;\nconst __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(script, [['render',_users_vue_vue_type_template_id_10849d37__WEBPACK_IMPORTED_MODULE_0__.render],['__file',\"js/components/users.vue\"]])\n/* hot reload */\nif (false) {}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);\n\n//# sourceURL=webpack://client/./js/components/users.vue?");
+
+/***/ }),
+
+/***/ "./js/components/App.vue?vue&type=script&lang=js":
+/*!*******************************************************!*\
+  !*** ./js/components/App.vue?vue&type=script&lang=js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* reexport safe */ _node_modules_vue_loader_dist_index_js_ruleSet_0_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])\n/* harmony export */ });\n/* harmony import */ var _node_modules_vue_loader_dist_index_js_ruleSet_0_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/dist/index.js??ruleSet[0]!./App.vue?vue&type=script&lang=js */ \"./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/App.vue?vue&type=script&lang=js\");\n \n\n//# sourceURL=webpack://client/./js/components/App.vue?");
 
 /***/ }),
 
@@ -218,6 +273,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./js/components/users.vue?vue&type=template&id=10849d37":
+/*!***************************************************************!*\
+  !*** ./js/components/users.vue?vue&type=template&id=10849d37 ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   render: () => (/* reexport safe */ _node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_1_node_modules_vue_loader_dist_index_js_ruleSet_0_users_vue_vue_type_template_id_10849d37__WEBPACK_IMPORTED_MODULE_0__.render)\n/* harmony export */ });\n/* harmony import */ var _node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_1_node_modules_vue_loader_dist_index_js_ruleSet_0_users_vue_vue_type_template_id_10849d37__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!../../node_modules/vue-loader/dist/index.js??ruleSet[0]!./users.vue?vue&type=template&id=10849d37 */ \"./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/users.vue?vue&type=template&id=10849d37\");\n\n\n//# sourceURL=webpack://client/./js/components/users.vue?");
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/App.vue?vue&type=template&id=6a6fa670":
 /*!***************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/App.vue?vue&type=template&id=6a6fa670 ***!
@@ -225,7 +291,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   render: () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/@vue/compat/dist/vue.runtime.esm-bundler.js\");\n\n\nconst _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \"asddddddd\", -1 /* HOISTED */)\n\nfunction render(_ctx, _cache) {\n  const _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)(\"router-view\")\n\n  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"div\", null, [\n    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view),\n    ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Teleport, { to: \"body\" }, [\n      _hoisted_1\n    ]))\n  ]))\n}\n\n//# sourceURL=webpack://client/./js/components/App.vue?./node_modules/vue-loader/dist/templateLoader.js??ruleSet%5B1%5D.rules%5B1%5D!./node_modules/vue-loader/dist/index.js??ruleSet%5B0%5D");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   render: () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/@vue/compat/dist/vue.runtime.esm-bundler.js\");\n\n\nconst _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \"asddddddd\", -1 /* HOISTED */)\n\nfunction render(_ctx, _cache, $props, $setup, $data, $options) {\n  const _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)(\"router-view\")\n\n  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"div\", null, [\n    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view),\n    ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Teleport, { to: \"body\" }, [\n      _hoisted_1\n    ]))\n  ]))\n}\n\n//# sourceURL=webpack://client/./js/components/App.vue?./node_modules/vue-loader/dist/templateLoader.js??ruleSet%5B1%5D.rules%5B1%5D!./node_modules/vue-loader/dist/index.js??ruleSet%5B0%5D");
 
 /***/ }),
 
@@ -248,6 +314,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   render: () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/@vue/compat/dist/vue.runtime.esm-bundler.js\");\n\n\nconst _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, \"asddddddddddd\", -1 /* HOISTED */)\nconst _hoisted_2 = { key: 0 }\nconst _hoisted_3 = { key: 1 }\n\nfunction render(_ctx, _cache, $props, $setup, $data, $options) {\n  const _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)(\"router-link\")\n\n  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"div\", null, [\n    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, { to: \"/another\" }, {\n      default: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(() => [\n        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.count), 1 /* TEXT */)\n      ], undefined, true),\n      _: 1 /* STABLE */\n    }),\n    _hoisted_1,\n    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"p\", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.users), 1 /* TEXT */),\n    (_ctx.$apollo.queries.users.loading)\n      ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"p\", _hoisted_2, \"Loading\"))\n      : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"p\", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.sss), 1 /* TEXT */)),\n    (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)(\"input\", {\n      type: \"number\",\n      \"onUpdate:modelValue\": _cache[0] || (_cache[0] = $event => (($data.idUsers) = $event))\n    }, null, 512 /* NEED_PATCH */), [\n      [vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.idUsers]\n    ])\n  ]))\n}\n\n//# sourceURL=webpack://client/./js/components/test.vue?./node_modules/vue-loader/dist/templateLoader.js??ruleSet%5B1%5D.rules%5B1%5D!./node_modules/vue-loader/dist/index.js??ruleSet%5B0%5D");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/users.vue?vue&type=template&id=10849d37":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/vue-loader/dist/index.js??ruleSet[0]!./js/components/users.vue?vue&type=template&id=10849d37 ***!
+  \*****************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   render: () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/@vue/compat/dist/vue.runtime.esm-bundler.js\");\n\n\nfunction render(_ctx, _cache) {\n  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(\"div\"))\n}\n\n//# sourceURL=webpack://client/./js/components/users.vue?./node_modules/vue-loader/dist/templateLoader.js??ruleSet%5B1%5D.rules%5B1%5D!./node_modules/vue-loader/dist/index.js??ruleSet%5B0%5D");
 
 /***/ }),
 

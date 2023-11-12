@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
-let { VueLoaderPlugin } = require('vue-loader')
+const dotenv = require('dotenv-webpack')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     entry: './js/main.js',
@@ -38,11 +39,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new dotenv(),
         new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             __VUE_OPTIONS_API__: true,
             __VUE_PROD_DEVTOOLS__: false,
-        }),
+        })
     ],
     watch: true
 }

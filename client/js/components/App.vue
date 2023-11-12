@@ -4,6 +4,12 @@
         <Teleport to="body">
             <p>asddddddd</p>
         </Teleport>
-    </div>
-    
+    </div>  
 </template>
+<script>
+    export default {
+        beforeCreate() {
+            this.$store.commit('initialiseStore')
+        }
+    }
+</script>
