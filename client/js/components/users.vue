@@ -11,7 +11,8 @@
             <div v-for="user in users" class="users">
                 <h1>{{ user.name }}</h1>
                 <img :src="user.image" :alt="user.name">
-                <button @click.prevent="deleteUsers(user.id)">x</button>
+                <p>{{ user.id_designer }}</p>
+                <button @click.prevent="deleteUsers($event, user.id_designer)">x</button>
             </div>
         </div>
     </div>
@@ -19,13 +20,7 @@
 <script>
     import gql from 'graphql-tag'
 
-    const GET_ALL_USERS = gql`query {
-                    getAllDesigners{
-                        id
-                        name
-                        image
-                    }
-                }`
+
 
     export default {
         data(){
@@ -37,7 +32,7 @@
             users:  {
                 query: gql`query ALL_Designers{
                     getAllDesigners{
-                        id
+                        id_designer
                         name
                         image
                     }
@@ -58,36 +53,37 @@
                 this.$apollo.mutate({
                     mutation: gql`mutation NEW_USER($input: InputDesigner){
                         createDesigner(input: $input){
-                            id
+                            id_designer
                             name,
                             image
                         }
                     }`,
                     update(storage, {data: { createDesigner }}){
-                        // try optimize refetch загвоздка с id, которого нет
-                        self.$apollo.queries.users.refetch()
+                        self.users = [...self.users, createDesigner]
                     },
                     variables: {
                         input: InputDesigner
                     }
                 })
             },
-            deleteUsers(id) {
+            deleteUsers(e, id_designer) {
                 const self = this
+
+                e.target.disabled = true
 
                 this.$apollo.mutate({
                     mutation: gql`mutation DELETE_USER($id: ID){
-                        deleteDesigner(id: $id){
-                            id
+                        deleteDesigner(id_designer: $id){
+                            id_designer
                             name,
                             image
                         }
                     }`,
                     update(storage, {data: { deleteDesigner }}){
-                        self.$apollo.queries.users.refetch()
+                        self.users = self.users.filter(e => e.id_designer != deleteDesigner.id_designer)
                     },
                     variables: {
-                        id
+                        id: Number(id_designer)
                     }
                 })
             }

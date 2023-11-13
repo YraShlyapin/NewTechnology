@@ -4,24 +4,23 @@ export default `schema {
 }
 
 type Query {
-    hello: String
     getAllDesigners: [Designer]
-    getDesigner(id: ID): Designer
+    getDesigner(id_designer: ID): Designer
 }
 
 type Mutation {
     createDesigner(input: InputDesigner): Designer
-    deleteDesigner(id: ID): Designer
+    deleteDesigner(id_designer: ID): Designer
 }
 
 type Designer {
-    id: ID
+    id_designer: ID
     name: String
     image: String
 }
 
 input InputDesigner {
-    id: ID
+    id_designer: ID
     name: String!
     image: String!
 }`

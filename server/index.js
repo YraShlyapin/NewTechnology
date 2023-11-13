@@ -1,5 +1,8 @@
 import express from 'express'
 import path from 'path'
+
+import * as db from './mysql.js'
+
 import { createYoga, createSchema } from 'graphql-yoga'
 import schema_file from './schemaGraphQL.js'
 
@@ -14,33 +17,24 @@ const host = process.env.HOST || 'localhost'
 async function main() {
 
     const app = express()
-    let db = [{name:"asd", id: 1, image: "https://"}]
     
     app.use(cors())
 
     const root = {
         Query: {
-            hello(_, _args) {
-                return "asd"
-            },
             getAllDesigners(_, _args) {
-                return db
+                return db.getDesigners()
             },
-            getDesigner(_, {id}) {
-                return db.find(e => e.id == id)
+            getDesigner(_, {id_designer}) {
+                return db.getOneDesigner(id_designer)
             }
         },
         Mutation: {
             createDesigner(_, {input}) {
-                let createUser = input
-                createUser.id = db.length
-                db.push(createUser)
-                return createUser
+                return db.addDesigner(input)
             },
-            deleteDesigner(_, {id}) {
-                let deletedUser = db.find(e => e.id == id)
-                db = db.filter(e => e.id != id)
-                return deletedUser
+            deleteDesigner(_, {id_designer}) {
+                return db.deleteDesigner(id_designer)
             }
         }
     }
