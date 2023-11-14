@@ -29,7 +29,7 @@
             users:  {
                 query: gql`query {
                     getAllDesigners{
-                        id
+                        id_designer
                         name
                         image
                     }
@@ -38,8 +38,8 @@
             },
             userById: {
                 query: gql`query DesignerById($id: ID) {
-                    getDesigner(id: $id){
-                        id
+                    getDesigner(id_designer: $id){
+                        id_designer
                         name
                         image
                     }
