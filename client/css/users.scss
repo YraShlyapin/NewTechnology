@@ -1,8 +1,58 @@
-#wrapper_users {
+#user_page {
     width: 100vw;
+    min-height: 100vw;
+
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 10px;
-    background-color: violet;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 25px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #wrapper_users {
+        width: calc(100vw - 200px);
+
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 20px;
+        
+        padding-right: 200px;
+
+        background-color: violet;
+
+        .users {
+            max-width: 150px;
+            width: 150px;
+            height: 250px;
+        }
+    }
+    
+    #interaction {
+        max-width: 180px;
+
+        position: fixed;
+        right: 0;
+        top: 50vh;
+        transform: translateY(-50%);
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+
+        #all_el {
+            text-wrap: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+        }
+    }
 }

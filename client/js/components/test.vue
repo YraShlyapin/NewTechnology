@@ -28,18 +28,18 @@
         apollo: {
             users:  {
                 query: gql`query {
-                    getAllDesigners{
-                        id_designer
+                    getAllUsers{
+                        id_user
                         name
                         image
                     }
                 }`,
-                update: data => data.getAllDesigners
+                update: data => data.getAllUsers
             },
             userById: {
-                query: gql`query DesignerById($id: ID) {
-                    getDesigner(id_designer: $id){
-                        id_designer
+                query: gql`query UserById($id: ID) {
+                    getUser(id_user: $id){
+                        id_user
                         name
                         image
                     }
@@ -52,7 +52,7 @@
                 manual: true,
                 result({ data, loading }) {
                     if (!loading) {
-                        this.sss = data?.getDesigner
+                        this.sss = data?.getUser
                     }
                 }
             }

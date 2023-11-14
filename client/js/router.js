@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import test from 'Components@/test.vue'
 import another from 'Components@/another.vue'
-import Users from 'Components@/users.vue'
+import users from 'Components@/users.vue'
 
 const routes = [
     {
@@ -11,7 +11,7 @@ const routes = [
     },
     {
         path: '/users',
-        component: Users
+        component: users
     },
     {
         path: '/another',

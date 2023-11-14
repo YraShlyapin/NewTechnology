@@ -4,23 +4,24 @@ export default `schema {
 }
 
 type Query {
-    getAllDesigners: [Designer]
-    getDesigner(id_designer: ID): Designer
+    getAllUsers: [User]
+    getUser(id_user: ID): User
 }
 
 type Mutation {
-    createDesigner(input: InputDesigner): Designer
-    deleteDesigner(id_designer: ID): Designer
+    createUser(input: InputUser): User
+    deleteUser(id_user: ID): User
+    deleteSelectedUser(id_user: [ID]): [User]
 }
 
-type Designer {
-    id_designer: ID
+type User {
+    id_user: ID
     name: String
     image: String
 }
 
-input InputDesigner {
-    id_designer: ID
+input InputUser {
+    id_user: ID
     name: String!
     image: String!
 }`

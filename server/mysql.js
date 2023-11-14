@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: '127.0.0.1',
     user: 'root',
     password: 'mysql',
-    database: 'ui_designer'
+    database: 'newtechnology'
 }).promise()
 
 async function getLastInsertID(){
@@ -12,32 +12,32 @@ async function getLastInsertID(){
     return Number(row[0]['id'])
 }
 
-export async function getDesigners() {
-    const [row] = await pool.query('SELECT * FROM designer')
+export async function getUsers() {
+    const [row] = await pool.query('SELECT * FROM user')
     return row
 }
 
-export async function getOneDesigner(id) {
+export async function getOneUser(id) {
     const [row] = await pool.query(
-        'SELECT * FROM designer WHERE id_designer = ?',
+        'SELECT * FROM user WHERE id_user = ?',
         [id]
     )
     return row[0]
 }
 
-export async function addDesigner(obj) {
+export async function addUser(obj) {
     await pool.query(
-        'INSERT INTO designer (name, image) VALUES (?, ?)',
+        'INSERT INTO user (name, image) VALUES (?, ?)',
         [obj.name, obj.image]
     )
-    const el = getOneDesigner(await getLastInsertID())
+    const el = getOneUser(await getLastInsertID())
     return el
 }
 
-export async function deleteDesigner(id) {
-    const el = getOneDesigner(id)
+export async function deleteUser(id) {
+    const el = getOneUser(id)
     await pool.query(
-        'DELETE FROM designer WHERE id_designer = ?',
+        'DELETE FROM user WHERE id_user = ?',
         [id]
     )
     return el

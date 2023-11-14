@@ -22,19 +22,27 @@ async function main() {
 
     const root = {
         Query: {
-            getAllDesigners(_, _args) {
-                return db.getDesigners()
+            getAllUsers(_, _args) {
+                return db.getUsers()
             },
-            getDesigner(_, {id_designer}) {
-                return db.getOneDesigner(id_designer)
+            getUser(_, {id_user}) {
+                return db.getOneUser(id_user)
             }
         },
         Mutation: {
-            createDesigner(_, {input}) {
-                return db.addDesigner(input)
+            createUser(_, {input}) {
+                return db.addUser(input)
             },
-            deleteDesigner(_, {id_designer}) {
-                return db.deleteDesigner(id_designer)
+            deleteUser(_, {id_user}) {
+                return db.deleteUser(id_user)
+            },
+            deleteSelectedUser(_, {id_user}) {
+                let users = []
+                for (let id of id_user) {
+                    let user = db.deleteUser(id)
+                    if (user) users.push(user)
+                }
+                return users
             }
         }
     }
