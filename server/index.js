@@ -4,6 +4,7 @@ import path from 'path'
 import * as db from './mysql.js'
 
 import { createYoga, createSchema } from 'graphql-yoga'
+import { DateTimeResolver } from 'graphql-scalars'
 import schema_file from './schemaGraphQL.js'
 
 import cors from 'cors'
@@ -43,8 +44,13 @@ async function main() {
                     if (user) users.push(user)
                 }
                 return users
+            },
+            setAutoincrementForUser(_, {id}){
+                db.setAutoIncrement(id)
+                return true
             }
-        }
+        },
+        Date: DateTimeResolver
     }
 
     const schema = createSchema({

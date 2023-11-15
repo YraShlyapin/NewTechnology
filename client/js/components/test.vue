@@ -1,7 +1,7 @@
 <template>
     <div>
-        <router-link to="/another"><p>{{ $store.state.count }}</p></router-link>
-        <router-link to="/users"><p>users</p></router-link>
+        <router-link to="/another">{{ $store.state.count }}</router-link><br>
+        <router-link to="/users">users</router-link>
         <p>asddddddddddd</p>
         <p>{{ users }}</p>
         <p v-if="$apollo.queries.users.loading">Loading</p>
