@@ -21,6 +21,11 @@ button {
     border: none;
     border-radius: 1rem;
 }
+
+button:disabled {
+    background-color: #888;
+}
+
 input {
     
 }

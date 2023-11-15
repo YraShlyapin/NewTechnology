@@ -2,21 +2,38 @@
     <div id="user_page">
         <div>
             <form @submit.prevent="postUser" id="userAdd">
-                <input type="text" name="name">
-                <input type="text" name="image">
+                <input type="text" name="name" placeholder="Имя">
+                <input type="text" name="image" placeholder="Ссылка на картинку">
                 <input type="date" name="birthday">
                 <button type="submit">отправить</button>
             </form>
         </div>
         <div id="wrapper_users">
-            <div v-for="user in users" class="users" :key="user.id_user">
-                <h1>{{ user.name }}</h1>
-                <img :src="user.image" :alt="user.name">
-                {{ new Date(user.birthday).toLocaleDateString({day: '2digit', month: '2digit', year: 'full'}) }}
-                <p>{{ user.id_user }}</p>
-                <input type="checkbox" @click="addToList($event, user.id_user)" class="checkbox_users" :inner="user.id_user">
-                <button @click.prevent="deleteUsers($event, user.id_user)">x</button>
-            </div>
+            <template v-for="user in users" :key="user.id_user">
+                <!--
+                    TODO подумать над редактированием более красивым
+                    подумать над временем, время зависит от часового пояса, так как на сервер посткпает на 4 часа назад на клиенте >< 4
+                -->
+                <div class="users" v-if="!editeElement[user.id_user]">
+                    <h1>{{ user.name }}</h1>
+                    <img :src="user.image" :alt="user.name">
+                    {{ new Date(user.birthday).toLocaleDateString({day: '2digit', month: '2digit', year: 'full'}) }}
+                    <p>{{ user.id_user }}</p>
+                    <label for="checkbox">удаление</label>
+                    <input type="checkbox" @click="addToList($event, user.id_user)" class="checkbox_users" name="checkbox" :inner="user.id_user">
+                    <button @click.prevent="deleteUsers($event, user.id_user)">x</button>
+                    <button @click.prevent="addEditeAttr(user.id_user)">x1</button>
+                </div>
+                <div class="users" v-else>
+                    <h1>23</h1>
+                    <img :src="user.image" :alt="user.name">
+                    {{ new Date(user.birthday).toLocaleDateString({day: '2digit', month: '2digit', year: 'full'}) }}
+                    <p>{{ user.id_user }}</p>
+                    <label for="checkbox">удаление</label>
+                    <input type="checkbox" @click="addToList($event, user.id_user)" class="checkbox_users" name="checkbox" :inner="user.id_user">
+                    <button @click.prevent="deleteUsers($event, user.id_user)">x</button>
+                </div>
+            </template>
         </div>
         <div id="interaction">
             <p id="all_el" :title="deleteUsersList.join(', ')">{{ deleteUsersList.join(', ') }}</p>
@@ -38,6 +55,7 @@
             return {
                 users: {},
                 deleteUsersList: [],
+                editeElement: {},
                 setIncrement: 0,
             }
         },
@@ -109,7 +127,6 @@
                     }`,
                     async update(storage, {data: { deleteUser }}){
                         self.users = self.users.filter(e => e?.id_user != deleteUser.id_user)
-                        e.target.disabled = false
                         let index = self.deleteUsersList.indexOf(id_user)
                         if (index >= 0) self.deleteUsersList.splice(index,1)
                     },
@@ -165,6 +182,10 @@
                 document.querySelectorAll('.checkbox_users').forEach(e => {
                     e.checked = true
                 })
+            },
+            addEditeAttr(id) {
+                console.log(this.editeElement[id])
+                this.editeElement[id] = true
             }
         }
     }

@@ -25,7 +25,6 @@ type User {
 }
 
 input InputUser {
-    id_user: ID
     name: String!
     image: String!
     birthday: Date!
