@@ -11,6 +11,7 @@ html, body {
 a {
     color: black;
     text-decoration: none;
+    cursor: pointer;
 }
 button {
     padding: 0.5rem;
@@ -20,6 +21,8 @@ button {
     
     border: none;
     border-radius: 1rem;
+
+    cursor: pointer;
 }
 
 button:disabled {
