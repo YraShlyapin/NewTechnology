@@ -11,10 +11,10 @@
         <div id="wrapper_users">
             <template v-for="user in users" :key="user.id_user">
                 <!--
-                    TODO подумать над редактированием более красивым
+                    TODO подумать над редактированием более красивым и менее нагружаемым
                     подумать над временем, время зависит от часового пояса, так как на сервер посткпает на 4 часа назад на клиенте >< 4
                 -->
-                <div class="users" v-if="!editeElement[user.id_user]">
+                <div class="users" v-if="idEdite != user.id_user">
                     <h1>{{ user.name }}</h1>
                     <img :src="user.image" :alt="user.name">
                     {{ new Date(user.birthday).toLocaleDateString({day: '2digit', month: '2digit', year: 'full'}) }}
@@ -22,16 +22,18 @@
                     <label for="checkbox">удаление</label>
                     <input type="checkbox" @click="addToList($event, user.id_user)" class="checkbox_users" name="checkbox" :inner="user.id_user">
                     <button @click.prevent="deleteUsers($event, user.id_user)">x</button>
-                    <button @click.prevent="addEditeAttr(user.id_user)">x1</button>
+                    <button @click.prevent="addEditeAttr(user.id_user)" v-if="idEdite != user.id_user">x1</button>
                 </div>
-                <div class="users" v-else>
-                    <h1>23</h1>
-                    <img :src="user.image" :alt="user.name">
+                <div class="users users_edite" v-else>
+                    <input type="text" :placeholder="user.name" v-model="editeElement.name">
+                    <input type="text" :placeholder="user.image" v-model="editeElement.image">
                     {{ new Date(user.birthday).toLocaleDateString({day: '2digit', month: '2digit', year: 'full'}) }}
+                    <input type="date" v-model="editeElement.birthday">
                     <p>{{ user.id_user }}</p>
                     <label for="checkbox">удаление</label>
                     <input type="checkbox" @click="addToList($event, user.id_user)" class="checkbox_users" name="checkbox" :inner="user.id_user">
-                    <button @click.prevent="deleteUsers($event, user.id_user)">x</button>
+                    <button @click="offEditeMode">отменить</button>
+                    <button @click="saveEdite">сохранить</button>
                 </div>
             </template>
         </div>
@@ -55,6 +57,7 @@
             return {
                 users: {},
                 deleteUsersList: [],
+                idEdite: false,
                 editeElement: {},
                 setIncrement: 0,
             }
@@ -63,7 +66,7 @@
             users:  {
                 query: gql`query ALL_Users{
                     getAllUsers{
-                        id_user
+                        aid_user
                         name
                         image
                         birthday
@@ -135,6 +138,11 @@
                     }
                 })
             },
+            saveEdite() {
+                let index = this.users.findIndex(e => e.id_user == this.idEdite)
+                
+                this.offEditeMode()
+            },
             deleteSelectedUser() {
                 const self = this
 
@@ -184,8 +192,13 @@
                 })
             },
             addEditeAttr(id) {
-                console.log(this.editeElement[id])
-                this.editeElement[id] = true
+                console.log(id)
+                this.idEdite = id
+                this.editeElement = {}
+            },
+            offEditeMode() {
+                this.idEdite = false
+                this.editeElement = {}
             }
         }
     }
